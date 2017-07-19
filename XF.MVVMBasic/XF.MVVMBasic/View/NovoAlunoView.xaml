@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Name="AlunosPage"
+             x:Class="XF.MVVMBasic.View.NovoAlunoView">
+
+    <ContentPage.Content>
+        <StackLayout Padding="20"
+                     BindingContext="{Binding BindingContext.AlunoModel, Source={x:Reference AlunosPage}}">
+            <Entry x:Name="txtNome" Placeholder="Nome" Text="{Binding Nome}" />
+            <Entry x:Name="txtRM" Placeholder="RM" Text="{Binding RM}" />
+            <Entry x:Name="txtEmail" Placeholder="E-mail" Text="{Binding Email}" />
+            <StackLayout Orientation="Horizontal">
+                <Button x:Name="btnSalvar" Text="Salvar" 
+                        Command="{Binding BindingContext.OnAdicionarAlunoCMD, Source={x:Reference AlunosPage}}"
+                        CommandParameter="{Binding .}"/>
+                <Button x:Name="btnCancelar" Text="Cancelar" Clicked="OnCancelar" />
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+
+</ContentPage>
